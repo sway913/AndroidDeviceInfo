@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.xzy.deviceinfo.util.SystemUtils
+import com.zy.devicelibrary.UtilsApp
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -13,6 +14,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         initDeviceInfo()
+        initDeviceInf2()
+    }
+
+    private fun initDeviceInf2() {
+        UtilsApp.init(this.application)
     }
 
     private fun initDeviceInfo() {
