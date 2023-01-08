@@ -51,6 +51,7 @@ public class SystemUtils {
     private static final String SYS_EMUI = "sys_emui";
     private static final String SYS_MIUI = "sys_miui";
     private static final String SYS_FLYME = "sys_flyme";
+    private static final String SYS_UNKNOW = "sys_other";
     private static final String KEY_MIUI_VERSION_CODE = "ro.miui.ui.version.code";
     private static final String KEY_MIUI_VERSION_NAME = "ro.miui.ui.version.name";
     private static final String KEY_MIUI_INTERNAL_STORAGE = "ro.miui.internal.storage";
@@ -59,7 +60,7 @@ public class SystemUtils {
     private static final String KEY_EMUI_CONFIG_HW_SYS_VERSION = "ro.confg.hw_systemversion";
 
     public static String getSystem() {
-        String system = "otherSystem";
+        String system = "System: ";
         try {
             Properties prop = new Properties();
             prop.load(new FileInputStream(new File(Environment.getRootDirectory(),
@@ -67,18 +68,19 @@ public class SystemUtils {
             if (prop.getProperty(KEY_MIUI_VERSION_CODE, null) != null
                     || prop.getProperty(KEY_MIUI_VERSION_NAME, null) != null
                     || prop.getProperty(KEY_MIUI_INTERNAL_STORAGE, null) != null) {
-                system = SYS_MIUI;//小米
+                system += SYS_MIUI;//小米
             } else if (prop.getProperty(KEY_EMUI_API_LEVEL, null) != null
                     || prop.getProperty(KEY_EMUI_VERSION, null) != null
                     || prop.getProperty(KEY_EMUI_CONFIG_HW_SYS_VERSION, null) != null) {
-                system = SYS_EMUI;//华为
+                system += SYS_EMUI;//华为
             } else if (getMeizuFlymeOSFlag().toLowerCase().contains("flyme")) {
-                system = SYS_FLYME;//魅族
+                system += SYS_FLYME;//魅族
             }
         } catch (IOException e) {
             e.printStackTrace();
-            return system;
+            system += SYS_UNKNOW;//未知
         }
+        system += "\n";
         return system;
     }
 

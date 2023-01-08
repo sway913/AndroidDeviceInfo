@@ -39,6 +39,20 @@
         <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:text="基本信息2"
+                android:textSize="30dp"
+                android:layout_marginTop="25dp"
+                android:textColor="#ffffff"
+                />
+        <TextView
+                android:id="@+id/basicInfo2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#ffffff"
+                android:text=""/>
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:text="内存信息"
                 android:textSize="30dp"
                 android:textColor="#ffffff"

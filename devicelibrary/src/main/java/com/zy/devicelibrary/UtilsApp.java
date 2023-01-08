@@ -9,6 +9,7 @@ import android.util.Log;
 import com.zy.devicelibrary.broadcast.BatteryBroadcastReceiver;
 import com.zy.devicelibrary.data.BatteryStatusData;
 import com.zy.devicelibrary.utils.GeneralUtils;
+import com.zy.devicelibrary.utils.PhoneUtils;
 
 public class UtilsApp {
 
@@ -48,6 +49,27 @@ public class UtilsApp {
         if (sApp != null) return sApp;
         if (sApp == null) throw new NullPointerException("reflect failed.");
         return sApp;
+    }
+
+    public static String getIMEI() {
+        String imei = PhoneUtils.getIMEI();
+        return imei + "\n";
+    }
+
+    public static String getInfo() {
+        String msg = PhoneUtils.getV1();
+        msg += PhoneUtils.getV2();
+        msg += PhoneUtils.getV3();
+        msg += PhoneUtils.getV4();
+        msg += PhoneUtils.getV5();
+        msg += PhoneUtils.getV6();
+        msg += PhoneUtils.getV7();
+        msg += PhoneUtils.getV8();
+        msg += PhoneUtils.getV9();
+        msg += PhoneUtils.getV10();
+        msg += PhoneUtils.getV11();
+
+        return msg;
     }
 
     public static void initBoadcast() {

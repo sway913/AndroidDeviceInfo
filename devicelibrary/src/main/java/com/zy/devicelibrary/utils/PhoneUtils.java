@@ -10,18 +10,23 @@ import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.zy.devicelibrary.UtilsApp;
 
+import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
 public class PhoneUtils {
+
+    private static final String KEY_MIUI_VERSION_CODE = "ro.miui.ui.version.code";
+    private static final String KEY_MIUI_VERSION_NAME = "ro.miui.ui.version.name";
+    private static final String KEY_MIUI_INTERNAL_STORAGE = "ro.miui.internal.storage";
+
     /**
      * 构造类
      */
@@ -54,6 +59,54 @@ public class PhoneUtils {
 
         }
         return getUniquePsuedoID();
+    }
+
+    public static String getV1() {
+        return "BOARD:" + Build.BOARD + "\n";
+    }
+
+    public static String getV2() {
+        return "CPU_ABI:" + Build.CPU_ABI + "\n";
+    }
+
+    public static String getV3() {
+        return "DEVICE:" + Build.DEVICE + "\n";
+    }
+
+    public static String getV4() {
+        return "DISPLAY:" + Build.DISPLAY + "\n";
+    }
+
+    public static String getV5() {
+        return "HOST:" + Build.HOST + "\n";
+    }
+
+    public static String getV6() {
+        return "ID:" + Build.ID + "\n";
+    }
+
+    public static String getV7() {
+        return "MANUFACTURER:" + Build.MANUFACTURER + "\n";
+    }
+
+    public static String getV8() {
+        return "MODEL:" + Build.MODEL + "\n";
+    }
+
+    public static String getV9() {
+        return "PRODUCT:" + Build.PRODUCT + "\n";
+    }
+
+    public static String getV10() {
+        return "TAGS:" + Build.TAGS + "\n";
+    }
+
+    public static String getV11() {
+        return "TYPE:" + Build.TYPE + "\n";
+    }
+
+    public static String getV12() {
+        return "USER:" + Build.USER + "\n";
     }
 
     /**

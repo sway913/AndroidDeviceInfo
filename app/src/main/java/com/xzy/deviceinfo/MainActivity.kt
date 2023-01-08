@@ -13,24 +13,30 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        initDeviceInfo2()
         initDeviceInfo()
-        initDeviceInf2()
     }
 
-    private fun initDeviceInf2() {
+    @SuppressLint("SetTextI18n")
+    private fun initDeviceInfo2() {
         UtilsApp.init(this.application)
+        val imei = UtilsApp.getIMEI()
+        val info = UtilsApp.getInfo()
+        basicInfo2.text = imei + info
     }
 
+    @SuppressLint("SetTextI18n")
     private fun initDeviceInfo() {
         val basic = SystemUtils.getSysVersionInfo(this)
         val memory = SystemUtils.getMemoInfo(this)
         val cpu = SystemUtils.getCpuInfo()
         val imei = SystemUtils.getIMEI(this)
+        val uiName = SystemUtils.getSystem()
         val storage = SystemUtils.getTotalInternalMemorySize() + SystemUtils.getAvailableInternalMemorySize() +
                 SystemUtils.getTotalExternalMemorySize() + SystemUtils.getAvailableExternalMemorySize()
         val sensor = SystemUtils.showSensorInfo(this)
         val mac = SystemUtils.getMacAddress(MainActivity@this)
-        basicInfo.text = basic
+        basicInfo.text = basic + uiName
         memoryInfo.text = memory
         imeiInfo.text = imei
         cpuInfo.text = cpu
